@@ -77,14 +77,8 @@ function func() {
     b.setAttribute("value", "My Cart 🛒");
     b.setAttribute("name", "cart")
     document.body.appendChild(b);
-    // checking everytime if cart is updated or not
-    var new_l = 0;
     b.addEventListener("click", function () {
-        if (new_l < l) {
-            cart();
-            new_l = l;
-        }
-        console.log("clicked");
+        cart();
     });
 }
 /*function back()
@@ -101,12 +95,7 @@ function addtolist(value) {
     if (value == "food") {
         for (var i = 0; i < 7; i++) {
             if (f[i].checked) {
-                lisItem = {};
-                lisItem.id = createGuid();
-                lisItem.name = food[i];
-                lisItem.type = value;
-                lisItem.count = 1;
-                list.push(lisItem);
+                addToCart(createGuid(), food[i], value);
                 j++;
             }
         }
@@ -114,12 +103,7 @@ function addtolist(value) {
     if (value == "clothes") {
         for (var i = 0; i < 7; i++) {
             if (c[i].checked) {
-                lisItem = {};
-                lisItem.id = createGuid();
-                lisItem.name = food[i];
-                lisItem.type = value;
-                lisItem.count = 1;
-                list.push(lisItem);
+                addToCart(createGuid(), cloth[i], value);
                 j++;
             }
         }
@@ -128,12 +112,7 @@ function addtolist(value) {
     if (value == "accessories") {
         for (var i = 0; i < 7; i++) {
             if (a[i].checked) {
-                lisItem = {};
-                lisItem.id = createGuid();
-                lisItem.name = food[i];
-                lisItem.type = value;
-                lisItem.count = 1;
-                list.push(lisItem);
+                addToCart(createGuid(), acc[i], value);
                 j++;
             }
         }
@@ -141,12 +120,7 @@ function addtolist(value) {
     if (value == "makeup") {
         for (var i = 0; i < 7; i++) {
             if (m[i].checked) {
-                lisItem = {};
-                lisItem.id = createGuid();
-                lisItem.name = food[i];
-                lisItem.type = value;
-                lisItem.count = 1;
-                list.push(lisItem);
+                addToCart(createGuid(), make[i], value);
                 j++;
             }
         }
@@ -155,8 +129,18 @@ function addtolist(value) {
 
 }
 
+function addToCart(id, name, type) {
+    lisItem = {};
+    lisItem.id = id;
+    lisItem.name = name;
+    lisItem.type = type;
+    lisItem.count = 1;
+    list[j] = lisItem;
+}
+
 function cart() {
     // delete old cart and add new updated cart only
+    console.log(list);
     if (document.getElementById('cart')) {
         document.getElementById('cart').remove();
     }
