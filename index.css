@@ -1,0 +1,12 @@
+body {
+    background:linear-gradient(DeepSkyBlue 0%,violet 50%,Pink 100%);
+}
+#top
+{
+    font-size:50px;
+    color:blue;
+}
+#item
+{
+    font-size:20px;
+}
